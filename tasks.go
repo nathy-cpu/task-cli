@@ -36,6 +36,7 @@ func (self *List) Complete(index int) error {
 		return fmt.Errorf("Task item %d does not exist!", index)
 	}
 
+	// adjust for 0 indexing
 	list[index - 1].Done = true
 	list[index - 1].DoneAt = time.Now()
 
@@ -48,6 +49,7 @@ func (self *List) Delete(index int) error {
 		return fmt.Errorf("Task item %d does not exist!", index)
 	}
 
+	// adjust for 0 indexing
 	*self = append(list[:index - 1], list[index:]...)
 
 	return nil
